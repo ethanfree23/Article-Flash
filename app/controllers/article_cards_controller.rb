@@ -1,0 +1,2 @@
+class ArticleCardsController < ApplicationController
+end
