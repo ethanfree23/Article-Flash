@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
         user = User.create!(user_params)
         render json: user, status: :created
     end
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
         User.find(params[:id])
     end
 
-    def user_params
-        params.permit(:username, :password, :email, :first_name, :last_name, :country)
+    def params_users
+        params.permit(:name, :email, :username, :password_digest)
     end
 end

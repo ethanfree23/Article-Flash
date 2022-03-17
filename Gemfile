@@ -46,5 +46,13 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'rspec-rails'
+end
+
+# group :development, :test do
+#   gem 'rspec-rails', ">= 3.9.0"
+# end
+
 
 gem "active_model_serializers", "~> 0.10.13"

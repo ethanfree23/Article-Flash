@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_204312) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_16_183406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "article_cards", force: :cascade do |t|
-    t.bigint "article_id", null: false
+    t.bigint "article_id"
+    t.bigint "flash_card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_article_cards_on_article_id"
+    t.index ["flash_card_id"], name: "index_article_cards_on_flash_card_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -32,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_204312) do
   create_table "flash_cards", force: :cascade do |t|
     t.string "word"
     t.string "meaning"
-    t.bigint "flash_set_id", null: false
+    t.bigint "flash_set_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flash_set_id"], name: "index_flash_cards_on_flash_set_id"
@@ -42,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_204312) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_flash_sets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_204312) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "article_cards", "articles"
-  add_foreign_key "flash_cards", "flash_sets"
+  add_foreign_key "flash_sets", "users"
 end

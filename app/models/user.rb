@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :flash_sets, dependent: :destroy
     has_many :flash_cards, through: :flash_sets
+    has_many :articles, through: :flash_sets
 
     validates :username, presence: true
     validates :password, presence: true

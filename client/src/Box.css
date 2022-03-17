@@ -1,0 +1,20 @@
+.box {
+    display: inline-block;
+    overflow: hidden;
+    height: 100px;
+    width: 331px;
+    margin: 15px;
+    padding: 20px;
+    background-color: #00a6e3d0;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+
+.box__image {
+    object-fit: contain;
+    float: left;
+}
+
+.box__username {
+
+}
