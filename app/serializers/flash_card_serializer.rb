@@ -1,4 +1,4 @@
 class FlashCardSerializer < ActiveModel::Serializer
   attributes :id, :word, :meaning
-  has_one :flash_set
+  belongs_to :flash_set
 end

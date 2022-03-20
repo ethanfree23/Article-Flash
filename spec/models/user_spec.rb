@@ -7,6 +7,19 @@ RSpec.describe User, type: :model do
     let(:user) { User.create(username: "testUsername", password: "testPassword", email: "testEmail", first_name: "testFirstName", last_name: "testLastName", country: "testCountry") }
     let(:flash_card) { FlashCard.create(word: "testWord", meaning: "testMeaning") }
 
+
+    it 'can access the associated flash_sets' do
+      flash_set = FlashSet.create(user_id: user.id, name: "testName")
+
+      expect(user.flash_sets).to include(flash_set)
+    end
+
+  end
+
+  describe 'relationships' do
+    let(:user) { User.create(username: "testUsername", password: "testPassword", email: "testEmail", first_name: "testFirstName", last_name: "testLastName", country: "testCountry") }
+    let(:article) { Article.create(title: "testArticle", content: "testContent", author: "testAuthor") }
+
     it 'can access the associated flash_sets' do
       flash_set = FlashSet.create(user_id: user.id, name: "testName")
 
