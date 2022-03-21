@@ -17,6 +17,7 @@
     margin-bottom: 15px;
     padding-bottom: 10px;
     letter-spacing: -1px;
+    color: #31b455;
 }
 
 .login__form > input {
@@ -25,7 +26,7 @@
     padding-left: 15px;
     margin-bottom: 10px;
     outline: none;
-    border: 1px solid rgba(o, 0, 0, 0.24);
+    border: 1px solid #04A5E3;
     font-family: "Inter";
     border-radius: 2px;
     font-size: 15px;
@@ -34,8 +35,8 @@
 .submit__btn {
     padding: 17px 30px;
     margin-top: 10px;
-    background: black;
-    border: none;
+    background: #04A5E3;
+    border: 3px solid #31b455;
     color: white;
     font-size: 14px;
     font-family: "Inter";

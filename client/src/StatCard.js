@@ -1,5 +1,5 @@
 import React from 'react'
-import './StatCard.css'
+import './css/StatCard.css'
 
 function StatCard({ name, country, sets }) {
     return (

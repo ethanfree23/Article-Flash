@@ -7,20 +7,6 @@ body {
   background-color: #FAFAFA;
 }
 
-.app__header {
-  background-color: white;
-  padding: 20px;
-  border-bottom: 2px solid #31b455;
-  object-fit: contain;
-}
-
-.app__headerImage {
-  background-color: white;
-  object-fit: contain;
-  height: 7%;
-  width: 7%;
-}
-
 .app__div_main {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import './css/Login.css';
+// import { login, logout } from './features/userSlice'
+import { login } from './features/userSlice'
 import { useDispatch } from 'react-redux'
-import './Login.css';
 
 function Login() {
   const [name, setName] = useState("");
@@ -12,13 +14,18 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(Login({
-      name: name,
-      email: email,
-      password: password,
-      loggedIn: true,
-    }))
-  }
+    dispatch(
+      login({
+        name: name,
+        email: email,
+        password: password,
+        loggedIn: true,
+      }
+      )
+    );
+    setEmail("");
+    setPassword("");
+  };
 
   return (
     <div className="login">
@@ -42,14 +49,12 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          type="submit"
-          className="submit__btn">
+        <button type="submit" className="submit__btn">
           Submit
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

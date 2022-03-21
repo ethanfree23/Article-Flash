@@ -1,0 +1,13 @@
+.header {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 2px solid #31b455;
+    object-fit: contain;
+}
+
+.header__image {
+    background-color: white;
+    object-fit: contain;
+    height: 7%;
+    width: 7%;
+  }
