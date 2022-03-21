@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css';
+import Login from "./Login.js"
+import Logout from "./Logout.js"
 import StatContainer from './StatContainer.js';
 import BoxContainer from './BoxContainer.js';
 import { useSelector } from "react-redux";
@@ -18,6 +20,8 @@ function App() {
           alt=""
         />
       </div>
+      <Logout />
+      <Login />
       <div className="app__div_main">
         <h1 className="app__h1_welcome">Welcome to Article Flash!</h1>
         <h2>An article based knowledge improvement app for language learners...</h2>
