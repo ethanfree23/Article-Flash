@@ -11,9 +11,13 @@ User.create(username: "Ethanfree23", password: "Audirsq8$!", email: "ethanfree23
 
 puts "Seeding Flash_sets..."
 FlashSet.create(name: "Common spanish verbs")
+FlashSet.create(name: "Common Spanish prepositions")
+FlashSet.create(name: "Common French prepositions")
 
 puts "Seeding Flash_cards..."
 FlashCard.create(word: "hacer", meaning: "to do")
+FlashCard.create(word: "vivir", meaning: "to live")
+FlashCard.create(word: "conocer", meaning: "to know")
 
 puts "Seeding Articles..."
 Article.create(title: "Como hacer algo nuevo", content: "Para llevar una identidad nuevo, necessitas una plan de \"hacer\".", author: "Jorge Gonzalez")
