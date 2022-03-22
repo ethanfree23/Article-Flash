@@ -2,12 +2,29 @@
     background-color: white;
     padding: 20px;
     border-bottom: 2px solid #31b455;
-    object-fit: contain;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
-.header__image {
+.header__logo {
     background-color: white;
-    object-fit: contain;
-    height: 7%;
-    width: 7%;
-  }
+    width: 25%;
+    padding-left: 2%;
+}
+
+.header__links_container {
+    padding-right: 2%;
+    flex: 1;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+}
+
+.header__links_divs {
+    border: 3px solid #31b455;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    font-size: 20px;
+}
