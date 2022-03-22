@@ -1,0 +1,8 @@
+.card-grid {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}

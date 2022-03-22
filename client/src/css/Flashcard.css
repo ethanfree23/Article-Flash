@@ -1,0 +1,58 @@
+.card {
+    border: 3px solid #31b455;
+    margin-right: 1.4rem;
+    margin-left: 1.4rem;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px #00a6e370;
+    background-color: white;
+    transform-style: preserve-3d;
+    /* height: 200px; */
+    width: 200px;
+    transition: 500ms;
+    cursor: pointer;
+    transform: perspective(1000px)rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+}
+
+.card:hover{
+    --translate-y: -5px;
+    box-shadow: 0 0 10px 5px #00a6e3;
+}
+
+.card.flip {
+    --rotate-y: 180deg;
+}
+
+.card .front {
+    left: 0;
+}
+
+.card .front,
+.card .back {
+    position: absolute;
+    padding: 1rem;
+    backface-visibility: hidden;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+}
+
+.card-options {
+    margin-top: .5rem;
+}
+
+.card-option {
+    margin-top: .25rem;
+    color: #555;
+    font-size: .75rem;
+}
+
+.card-option:first-child {
+    margin-top: 5px;
+}

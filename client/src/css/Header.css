@@ -19,6 +19,8 @@
     text-align: right;
     display: flex;
     justify-content: right;
+    align-items: center;
+    position: relative;
 }
 
 .header__links_divs {
