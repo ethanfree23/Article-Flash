@@ -4,10 +4,12 @@ import Flashcard from './Flashcard.js';
 
 function FlashCardList({ flashcards }) {
     return (
-        <div className="card-grid">
-            {flashcards.map(flashcard => {
-                return <Flashcard flashcard={flashcard} key={flashcard.id} />
-            })}
+        <div className="flashcardlist_container">
+            <div className="card-grid">
+                {flashcards.map(flashcard => {
+                    return <Flashcard flashcard={flashcard} key={flashcard.id} />
+                })}
+            </div>
         </div>
     )
 }

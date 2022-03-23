@@ -2,7 +2,12 @@ import './css/App.css';
 
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from './features/userSlice'
 
@@ -45,22 +50,31 @@ function App() {
   }
 
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <div className="app__flashcardlist_container">
-        <FlashcardList flashcards={flashcards} />
-      </div>
+      <>
+        <Routes>
+          <Route path="/" element={<FlashcardList flashcards={flashcards} />} />
+        </Routes>
+      </>
+    </BrowserRouter>
+
+    // <div>
+    //   <Header />
+    //   <div className="app__flashcardlist_container">
+    //     <FlashcardList flashcards={flashcards} />
+    //   </div>
 
 
-      {user ? <Logout /> : <Login />}
-      <div className="app__div_main">
-        <h1 className="app__h1_welcome">Welcome to Article Flash!</h1>
-        <h2>An article based knowledge improvement app for language learners...</h2>
-        <StatContainer name="Ethan Freeman" country="USA" sets="17" />
-        <BoxContainer type="Sets" />
-        <BoxContainer type="Articles" />
-      </div>
-    </div>
+    //   {user ? <Logout /> : <Login />}
+    //   <div className="app__div_main">
+    //     <h1 className="app__h1_welcome">Welcome to Article Flash!</h1>
+    //     <h2>An article based knowledge improvement app for language learners...</h2>
+    //     <StatContainer name="Ethan Freeman" country="USA" sets="17" />
+    //     <BoxContainer type="Sets" />
+    //     <BoxContainer type="Articles" />
+    //   </div>
+    // </div>
   );
 }
 

@@ -5,13 +5,16 @@ class FlashSetsController < ApplicationController
     def index
         render json: FlashSet.all
     end
-
+    
     def show
         flashset = find_flashset
         render json: flashset
     end
 
     def create
+        # byebug
+        # get the current user and associate the flashset with the current user
+        user = Session.current_user
         flashset = FlashSet.create!(flashset_params)
         render json: flashset, status: :created
     end
@@ -26,6 +29,7 @@ class FlashSetsController < ApplicationController
         flashset.destroy
         head :no_content
     end
+
 
     private
 
