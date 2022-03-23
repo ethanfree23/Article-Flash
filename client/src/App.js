@@ -11,12 +11,15 @@ import {
 import { useSelector } from "react-redux";
 import { selectUser } from './features/userSlice'
 
-import Header from './Header.js';
-import FlashcardList from './FlashcardList.js';
 import Login from "./Login.js"
+import Dashboard from "./Dashboard.js"
+import FlashSets from "./FlashSets.js"
+import FlashCards from './Flashcards.js'
+import Articles from './Articles.js';
+import Article from './Article.js';
+
 import Logout from "./Logout.js"
-import StatContainer from './StatContainer.js';
-import BoxContainer from './BoxContainer.js';
+
 
 function App() {
   const user = useSelector(selectUser);
@@ -51,10 +54,31 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
       <>
         <Routes>
-          <Route path="/" element={<FlashcardList flashcards={flashcards} />} />
+
+          {/* Login */}
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Dashboard */}
+          <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* Sets */}
+          <Route path="/my-sets" element={<FlashSets />} />
+
+          {/* Flashcards */}
+          <Route path="/flashcards" element={<FlashCards flashcards={flashcards} />} />
+
+          {/* Articles */}
+          <Route path="/my-articles" element={<Articles />} />
+
+          {/* Article */}
+          <Route path="/article" element={<Article />} />
+
+          {/* Logout */}
+          <Route path="/logout" element={<Logout />} />
+
         </Routes>
       </>
     </BrowserRouter>
