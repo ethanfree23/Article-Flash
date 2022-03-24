@@ -6,6 +6,7 @@ export const fetchArticles = createAsyncThunk(
         return fetch("/articles")
             .then((res) => res.json());
     }
+    // actions! .then send off object with key of case statement of reducer
 );
 
 const articlesSlice = createSlice({
