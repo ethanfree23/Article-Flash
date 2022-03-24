@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from './features/userSlice'
+import { fetchArticles } from './features/articlesSlice'
+import { useDispatch } from "react-redux";
 
 import Login from "./Login.js"
 import Dashboard from "./Dashboard.js"
@@ -22,9 +24,16 @@ import Logout from "./Logout.js"
 
 
 function App() {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   // console.log(user)
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchArticles());
+  }, [dispatch]);
+
 
   useEffect(() => {
     axios
@@ -90,7 +99,7 @@ function App() {
     //   </div>
 
 
-    //   {user ? <Logout /> : <Login />}
+      // {user ? <Logout /> : <Login />}
     //   <div className="app__div_main">
     //     <h1 className="app__h1_welcome">Welcome to Article Flash!</h1>
     //     <h2>An article based knowledge improvement app for language learners...</h2>
