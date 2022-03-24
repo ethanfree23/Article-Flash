@@ -9,10 +9,13 @@ import {
   Link,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUser } from './features/userSlice'
+import { selectUser } from './features/usersSlice'
 import { fetchArticles } from './features/articlesSlice'
 import { useDispatch } from "react-redux";
 
+import { AddUser } from './AddUser.js'
+import { EditUser } from './EditUser.js'
+import { UserList } from './UserList.js'
 import Login from "./Login.js"
 import Dashboard from "./Dashboard.js"
 import FlashSets from "./FlashSets.js"
@@ -24,8 +27,8 @@ import Logout from "./Logout.js"
 
 
 function App() {
-  // const user = useSelector(selectUser);
-  // console.log(user)
+  // const users = useSelector((state) => state.users);
+  // console.log(users)
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 
   const dispatch = useDispatch();
@@ -66,6 +69,15 @@ function App() {
       <>
         <Routes>
 
+          {/* Add User */}
+          <Route path="/add-user" component={<AddUser />} />
+
+          {/* Edit User */}
+          <Route path="/edit-user" component={<EditUser />} />
+
+          {/* User List */}
+          <Route path="/user-list" component={<UserList />} />
+
           {/* Login */}
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
@@ -99,7 +111,7 @@ function App() {
     //   </div>
 
 
-      // {user ? <Logout /> : <Login />}
+    // {user ? <Logout /> : <Login />}
     //   <div className="app__div_main">
     //     <h1 className="app__h1_welcome">Welcome to Article Flash!</h1>
     //     <h2>An article based knowledge improvement app for language learners...</h2>

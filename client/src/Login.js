@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './css/Login.css';
 // import { login, logout } from './features/userSlice'
-import { login } from './features/userSlice'
+import { login } from './features/usersSlice'
 import { useDispatch } from 'react-redux'
 
 function Login() {
