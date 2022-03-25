@@ -11,4 +11,4 @@ function StatContainer({ name, country, sets }) {
     )
 }
 
-export default StatContainer
+export default StatContainer;

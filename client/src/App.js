@@ -9,13 +9,13 @@ import {
   Link,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUser } from './features/usersSlice'
+import { selectCard } from './/features/cardsSlice'
 import { fetchArticles } from './features/articlesSlice'
 import { useDispatch } from "react-redux";
 
-import { AddUser } from './AddUser.js'
-import { EditUser } from './EditUser.js'
-import { UserList } from './UserList.js'
+import AddCard from './features/AddCard.jsx'
+import EditCard from './features/EditCard.jsx'
+import CardList from './features/CardList.jsx'
 import Login from "./Login.js"
 import Dashboard from "./Dashboard.js"
 import FlashSets from "./FlashSets.js"
@@ -27,8 +27,8 @@ import Logout from "./Logout.js"
 
 
 function App() {
-  // const users = useSelector((state) => state.users);
-  // console.log(users)
+  const cards = useSelector(state => state.cards);
+  console.log(cards)
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 
   const dispatch = useDispatch();
@@ -69,14 +69,14 @@ function App() {
       <>
         <Routes>
 
-          {/* Add User */}
-          <Route path="/add-user" component={<AddUser />} />
+          {/* Add Card */}
+          <Route path="/add-card" element={<AddCard />} />
 
-          {/* Edit User */}
-          <Route path="/edit-user" component={<EditUser />} />
+          {/* Edit Card */}
+          <Route path="/edit-card" element={<EditCard />} />
 
-          {/* User List */}
-          <Route path="/user-list" component={<UserList />} />
+          {/* Card List */}
+          <Route path="/card-list" element={<CardList />} />
 
           {/* Login */}
           <Route path="/" element={<Login />} />
@@ -149,3 +149,4 @@ const SAMPLE_FLASHCARDS = [
 ]
 
 export default App;
+
