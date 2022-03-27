@@ -15,12 +15,18 @@ export function SetList() {
     dispatch(setDeleted({ id }));
   };
 
+
   return (
     <>
-    <Header />
+      {/* <Header /> */}
       <div className="container">
         <div className="row">
           <h1>Redux CRUD Set app</h1>
+        </div>
+        <div>
+          <Link to="/dashboard">
+            <button className="button-primary">Go To Dashboard!</button>
+          </Link>
         </div>
         <div className="row">
           <div className="two columns">
