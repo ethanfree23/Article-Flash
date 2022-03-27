@@ -6,7 +6,7 @@ function StatCard({ name, country, sets }) {
         <div className="statCard">
             <h2 className="statCard__h2">{name}</h2>
             <h2 className="statCard__h2">{country}</h2>
-            <h2 className="statCard__h2">{sets} sets</h2>
+            <h2 className="statCard__h2">{sets} # of sets</h2>
         </div>
     )
 }

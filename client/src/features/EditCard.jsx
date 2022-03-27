@@ -33,7 +33,7 @@ export function EditCard() {
       );
 
       setError(null);
-      navigate("/card-list");
+      navigate("/flashcards");
     } else {
       setError("Fill in all fields");
     }

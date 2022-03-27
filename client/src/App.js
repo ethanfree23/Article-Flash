@@ -81,7 +81,7 @@ function App() {
           <Route path="/add-card" element={<AddCard />} />
 
           {/* Edit Card */}
-          <Route path="/edit-card" element={<EditCard />} />
+          <Route path={'/edit-card/:id'} element={<EditCard />} />
 
           {/* Card List */}
           <Route path="/card-list" element={<CardList />} />

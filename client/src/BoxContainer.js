@@ -1,7 +1,9 @@
 import React from 'react'
 import './css/BoxContainer.css'
 import Box from './Box.js'
-
+import { useSelector } from "react-redux"
+import CardList from "./features/CardList"
+import { fetchCards } from "./features/cardsSlice";
 
 
 function BoxContainer({ type }) {
@@ -23,3 +25,15 @@ function BoxContainer({ type }) {
 }
 
 export default BoxContainer
+
+// (
+//     <>
+
+//         {entities.length &&
+//             entities.map((entity) => (
+//                 <div>
+//                     {entity.name}
+//                 </div>
+//             ))}
+//     </>
+// )

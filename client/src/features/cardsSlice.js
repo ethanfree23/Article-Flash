@@ -17,11 +17,11 @@ const cardsSlice = createSlice({
       state.entities.push(action.payload);
     },
     cardUpdated(state, action) {
-      const { id, name, email } = action.payload;
+      const { id, word, meaning } = action.payload;
       const existingCard = state.entities.find((card) => card.id === id);
       if (existingCard) {
-        existingCard.name = name;
-        existingCard.email = email;
+        existingCard.word = word;
+        existingCard.meaning = meaning;
       }
     },
     cardDeleted(state, action) {

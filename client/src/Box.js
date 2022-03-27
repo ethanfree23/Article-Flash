@@ -1,12 +1,26 @@
 import React from 'react'
 import './css/Box.css'
+import { useSelector } from "react-redux"
+import CardList from "./features/CardList"
+import { fetchCards } from "./features/cardsSlice";
 
-function Box({ type }) {
+function Box() {
+
+    const entities = useSelector((state) => state.entities);
+
+    // console.log(entities.map((entity)))
     return (
         <div className="box">
             <span>
-                <p>{type} Name</p> <br />
-                <p>Number of terms</p> <br />
+                <>
+                    {entities?.length &&
+                        entities.map((entity) => (
+                            <div>
+                                {entity.name}
+                            </div>
+                        ))}
+                        
+                </>
             </span>
         </div>
     )
@@ -16,3 +30,15 @@ export default Box;
 
 
 {/* name of set, # of terms, avatar, username */ }
+
+// (
+//     <>
+
+//         {entities.length &&
+//             entities.map((entity) => (
+//                 <div>
+//                     {entity.name}
+//                 </div>
+//             ))}
+//     </>
+// )
