@@ -1,20 +1,30 @@
 .box {
-    display: inline-block;
-    overflow: hidden;
-    height: 100px;
-    width: 331px;
-    margin: 15px;
-    padding: 20px;
-    background-color: #00a6e3d0;
-    border: 2px solid lightgray;
-    border-radius: 10px;
+    border: 3px solid #31b455;
+    margin-right: 1.4rem;
+    margin-left: 2.3rem;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px 2px #00a6e370;
+    background-color: white;
+    transform-style: preserve-3d;
+    width: 200px;
+    transition: 500ms;
+    cursor: pointer;
+    transform: perspective(1000px)rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    left: 0;
+    /* position: absolute; */
+    padding: 1rem;
+    backface-visibility: hidden;
 }
 
-.box__image {
-    object-fit: contain;
-    float: left;
+.box:hover {
+    --translate-y: -5px;
+    box-shadow: 0 0 10px 5px #00a6e3;
 }
 
-.box__username {
 
-}
