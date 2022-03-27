@@ -13,7 +13,7 @@ export function EditSet() {
   );
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [name, setName] = useState(set.name);
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ export function EditSet() {
       );
 
       setError(null);
-      history.push("/");
+      navigate("/dashboard");
     } else {
       setError("Fill in all fields");
     }
@@ -61,3 +61,5 @@ export function EditSet() {
     </div>
   );
 }
+
+export default EditSet;

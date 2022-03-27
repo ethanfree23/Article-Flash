@@ -17,6 +17,9 @@ import { useDispatch } from "react-redux";
 import AddCard from './features/AddCard.jsx'
 import EditCard from './features/EditCard.jsx'
 import CardList from './features/CardList.jsx'
+import AddSet from './features/AddSet.jsx'
+import EditSet from './features/EditSet.jsx'
+import SetList from './features/SetList.jsx'
 import Login from "./Login.js"
 import Dashboard from "./Dashboard.js"
 import FlashSets from "./FlashSets.js"
@@ -85,6 +88,16 @@ function App() {
 
           {/* Card List */}
           <Route path="/card-list" element={<CardList />} />
+
+          {/* Add Set */}
+          <Route path="/add-set" element={<AddSet />} />
+          <Route path="/add-set-set-list" element={<SetList />} />
+
+          {/* Edit Set */}
+          <Route path={'/edit-set/:id'} element={<EditSet />} />
+
+          {/* Set List */}
+          <Route path="/set-list" element={<SetList />} />
 
           {/* Login/Logout */}
           {user ?

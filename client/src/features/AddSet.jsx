@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { setAdded } from "./setsSlice";
 
 export function AddSet() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ export function AddSet() {
       );
 
       setError(null);
-      history.push("/");
+      navigate("/add-set-set-list");
     } else {
       setError("Fill in all fields");
     }
@@ -58,3 +58,4 @@ export function AddSet() {
     </div>
   );
 }
+export default AddSet;

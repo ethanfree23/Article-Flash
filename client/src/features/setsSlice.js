@@ -6,7 +6,7 @@ export const fetchSets = createAsyncThunk("sets/fetchSets", async () => {
   return set;
 });
 
-const setSlice = createSlice({
+const setsSlice = createSlice({
   name: "set",
   initialState: {
     entities: [],

@@ -17,7 +17,7 @@ function Header() {
             <div className="header__links_container">
                 <nav>
                     <Link className="header__links_divs" to="/dashboard">Dashboard</Link>
-                    <Link className="header__links_divs" to="/my-sets">My Sets</Link>
+                    <Link className="header__links_divs" to="/set-list">My Sets</Link>
                     <Link className="header__links_divs" to="/flashcards">Flashcards </Link>
                 </nav>
             </div>

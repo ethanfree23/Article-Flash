@@ -1,4 +1,3 @@
-import '../css/CardList.css'
 import { fetchCards, cardDeleted } from "./cardsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
