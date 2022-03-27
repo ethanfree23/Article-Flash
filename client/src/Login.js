@@ -12,6 +12,8 @@ function Login({ users }) {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("pending")
 
+  console.log(users)
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
