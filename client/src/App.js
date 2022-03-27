@@ -8,8 +8,9 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
-import { selectCard } from './/features/cardsSlice'
+import { selectCard } from './features/cardsSlice'
 import { fetchArticles } from './features/articlesSlice'
 import { useDispatch } from "react-redux";
 
@@ -27,8 +28,10 @@ import Logout from "./Logout.js"
 
 
 function App() {
+  const user = useSelector(selectUser);
+  const [users, setUsers] = useState([]);
   const cards = useSelector(state => state.cards);
-  console.log(cards)
+  // console.log(cards)
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 
   const dispatch = useDispatch();
@@ -37,6 +40,11 @@ function App() {
     dispatch(fetchArticles());
   }, [dispatch]);
 
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   useEffect(() => {
     axios
@@ -78,9 +86,12 @@ function App() {
           {/* Card List */}
           <Route path="/card-list" element={<CardList />} />
 
-          {/* Login */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          {/* Login/Logout */}
+          {user ?
+            <Route path="/dashboard" element={<Dashboard />} /> :
+            <Route path="/login" element={<Login users={users} />} />}
+          {/* <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} /> */}
 
           {/* Dashboard */}
           <Route path="/dashboard" element={<Dashboard />} />

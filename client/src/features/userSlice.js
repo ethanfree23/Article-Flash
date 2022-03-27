@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
     name: "user",
     initialState: {
-        user: null
+        user: null,
     },
     reducers: {
         login: (state, action) => {

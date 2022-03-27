@@ -13,7 +13,7 @@ export function EditCard() {
   );
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const [word, setWord] = useState(card.word);
   const [meaning, setMeaning] = useState(card.meaning);
@@ -33,7 +33,7 @@ export function EditCard() {
       );
 
       setError(null);
-      history.push("/");
+      navigate("/card-list");
     } else {
       setError("Fill in all fields");
     }
