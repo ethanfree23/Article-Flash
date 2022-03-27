@@ -1,3 +1,4 @@
+import '../css/CardList.css'
 import { fetchCards, cardDeleted } from "./cardsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,7 +15,7 @@ export function CardList() {
   };
 
   return (
-    <div className="container">
+    <div className="cardlist__container">
       <div className="row">
         <h1>Redux CRUD Card List</h1>
       </div>
