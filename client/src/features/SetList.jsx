@@ -15,10 +15,11 @@ export function SetList() {
     dispatch(setDeleted({ id }));
   };
 
+  console.log(entities)
+
 
   return (
     <>
-      {/* <Header /> */}
       <div className="container">
         <div className="row">
           <h1>Redux CRUD Set app</h1>

@@ -33,6 +33,7 @@ import Logout from "./Logout.js"
 function App() {
   const user = useSelector(selectUser);
   const [users, setUsers] = useState([]);
+  const [articles, setArticles] = useState([]);
   const cards = useSelector(state => state.cards);
   // console.log(cards)
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
@@ -49,6 +50,17 @@ function App() {
       .then((data) => setUsers(data));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:8000/results")
+    .then(r => {
+      return r.json();
+    })
+    .then((data) => {
+      // console.log(data);
+      setArticles(data)
+    })
+  }, []);
+  
   useEffect(() => {
     axios
       .get("https://opentdb.com/api.php?amount=10")
@@ -116,7 +128,7 @@ function App() {
           <Route path="/flashcards" element={<FlashCards flashcards={flashcards} />} />
 
           {/* Articles */}
-          <Route path="/my-articles" element={<Articles />} />
+          <Route path="/my-articles" element={<Articles articles={articles} />} />
 
           {/* Article */}
           <Route path="/article" element={<Article />} />

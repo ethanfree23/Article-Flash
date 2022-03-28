@@ -12,7 +12,7 @@ export function CardList() {
   const handleDelete = (id) => {
     dispatch(cardDeleted({ id }));
   };
-
+console.log(entities)
   return (
     <div className="cardlist__container">
       <div className="row">

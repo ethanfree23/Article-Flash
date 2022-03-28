@@ -1,24 +1,20 @@
 import React from 'react'
 import './css/BoxContainer.css'
-import Box from './Box.js'
+import ArticleBox from './ArticleBox.js'
 import { useSelector } from "react-redux"
 import CardList from "./features/CardList"
 import { fetchCards } from "./features/cardsSlice";
 
 
-function BoxContainer({ type }) {
+function BoxContainer({ articles }) {
+    console.log(articles)
     return (
         <div className="boxContainer">
             <div className="box__grid">
-                {/* <h1>{type}</h1> */}
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
-                <Box type={type} />
+                {articles.map(article => {
+                    return (
+                        <ArticleBox article={article} />)
+                })}
             </div>
         </div>
     )

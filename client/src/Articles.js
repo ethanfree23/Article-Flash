@@ -3,11 +3,11 @@ import Header from './Header.js';
 import BoxContainer from './BoxContainer.js'
 
 
-function Articles() {
+function Articles({ articles }) {
   return (
     <>
-        <Header />
-        <BoxContainer />
+      <Header />
+      <BoxContainer articles={articles}Î/>
     </>
   )
 }
