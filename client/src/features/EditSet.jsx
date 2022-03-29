@@ -15,7 +15,7 @@ export function EditSet() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [name, setName] = useState(set.name);
+  const [name, setName] = useState(set?.name);
   const [error, setError] = useState(null);
 
   const handleName = (e) => setName(e.target.value);

@@ -23,7 +23,8 @@ import SetList from './features/SetList.jsx'
 import Login from "./Login.js"
 import Dashboard from "./Dashboard.js"
 import FlashSets from "./FlashSets.js"
-import FlashCards from './Flashcards.js'
+import FlashcardsPage from "./FlashcardsPage.js"
+import FunTrivia from './FunTrivia.js'
 import Articles from './Articles.js';
 import Article from './Article.js';
 
@@ -36,7 +37,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const cards = useSelector(state => state.cards);
   // console.log(cards)
-  const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
+  const [funTrivia, setFunTrivia] = useState(SAMPLE_FLASHCARDS)
 
   const dispatch = useDispatch();
 
@@ -52,20 +53,40 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:8000/results")
-    .then(r => {
-      return r.json();
-    })
-    .then((data) => {
-      // console.log(data);
-      setArticles(data)
-    })
+      .then(r => {
+        return r.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        setArticles(data)
+      })
   }, []);
-  
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://opentdb.com/api.php?amount=10")
+  //     .then(r => {
+  //       setFlashcards(r.data.results.map((questionItem, index) => {
+  //         const answer = decodeString(questionItem.correct_answer)
+  //         const options = [
+  //           ...questionItem.incorrect_answers.map(a => decodeString(a)),
+  //           answer
+  //         ]
+  //         return {
+  //           id: `${index}-${Date.now}`,
+  //           question: decodeString(questionItem.question),
+  //           answer: answer,
+  //           options: options.sort(() => Math.random() - .5)
+  //         }
+  //       }))
+  //     })
+  // }, [])
+
   useEffect(() => {
     axios
-      .get("https://opentdb.com/api.php?amount=10")
+      .get("https://opentdb.com/api.php?amount=12")
       .then(r => {
-        setFlashcards(r.data.results.map((questionItem, index) => {
+        setFunTrivia(r.data.results.map((questionItem, index) => {
           const answer = decodeString(questionItem.correct_answer)
           const options = [
             ...questionItem.incorrect_answers.map(a => decodeString(a)),
@@ -108,6 +129,9 @@ function App() {
           {/* Edit Set */}
           <Route path={'/edit-set/:id'} element={<EditSet />} />
 
+          {/* Study Set */}
+          <Route path={'/flashcards/:id'} element={<FlashcardsPage />} />
+
           {/* Set List */}
           <Route path="/set-list" element={<SetList />} />
 
@@ -125,13 +149,19 @@ function App() {
           <Route path="/my-sets" element={<FlashSets />} />
 
           {/* Flashcards */}
-          <Route path="/flashcards" element={<FlashCards flashcards={flashcards} />} />
+          <Route path="/flashcards" element={<FlashcardsPage />} />
+
+          {/* Fun Trivia */}
+          <Route path="/fun-trivia" element={<FunTrivia funTrivia={funTrivia} />} />
 
           {/* Articles */}
           <Route path="/my-articles" element={<Articles articles={articles} />} />
 
           {/* Article */}
           <Route path="/article" element={<Article />} />
+
+          {/* Article */}
+          {/* <Route path="/fun-trivia" element={<FunTrivia funTrivia={funTrivia}/>} /> */}
 
           {/* Logout */}
           <Route path="/logout" element={<Logout />} />

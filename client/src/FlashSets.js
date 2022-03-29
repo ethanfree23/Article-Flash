@@ -1,12 +1,15 @@
 import React from 'react'
 import Header from './Header.js';
-import BoxContainer from './BoxContainer.js'
+import SetList from './features/SetList.jsx';
+
+import { Link } from 'react-router-dom'
 
 function FlashSets() {
   return (
     <>
     <Header />
-    <BoxContainer />
+
+    <SetList />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './css/Flashcard.css'
+import './css/FunFact.css'
 
-function FlashCard({ flashcard }) {
+function FunFact({ funFact }) {
     const [flip, setFlip] = useState(false)
     const [height, setHeight] = useState('initial')
 
@@ -15,7 +15,7 @@ function FlashCard({ flashcard }) {
         const backHeight = backEl.current.getBoundingClientRect().height
         setHeight(Math.max(frontHeight, backHeight, 100))
     }
-    useEffect(setMaxHeight, [flashcard.quesiton, flashcard.answer, flashcard.options])
+    useEffect(setMaxHeight, [funFact.quesiton, funFact.answer, funFact.options])
     useEffect(() => {
         window.addEventListener('resize', setMaxHeight)
         return () => window.removeEventListener('resize', setMaxHeight)
@@ -28,16 +28,16 @@ function FlashCard({ flashcard }) {
             onClick={() => setFlip(!flip)}
         >
             <div className="front" ref={frontEl}>
-                {flashcard.question}
+                {funFact.question}
                 <div className="card-options">
-                    {flashcard.options.map(option => {
+                    {funFact.options.map(option => {
                         return <div className="card-option">{option}</div>
                     })}
                 </div>
             </div>
-            <div className="back" ref={backEl}>{flashcard.answer}</div>
+            <div className="back" ref={backEl}>{funFact.answer}</div>
         </div>
     )
 }
 
-export default FlashCard
+export default FunFact

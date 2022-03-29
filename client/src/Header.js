@@ -16,9 +16,11 @@ function Header() {
             </div>
             <div className="header__links_container">
                 <nav>
-                    <Link className="header__links_divs" to="/dashboard">Dashboard</Link>
-                    <Link className="header__links_divs" to="/set-list">My Sets</Link>
-                    <Link className="header__links_divs" to="/flashcards">Flashcards </Link>
+                    {/* <Link className="header__links_divs" to="/dashboard">Dashboard</Link> */}
+                    <Link className="header__links_divs" to="/my-sets">My Sets</Link>
+                    {/* <Link className="header__links_divs" to="/flashcards">Study</Link> */}
+                    <Link className="header__links_divs" to="/my-articles">All Articles</Link>
+                    <Link className="header__links_divs" to="/fun-trivia">Fun Trivia</Link>
                 </nav>
             </div>
         </nav>

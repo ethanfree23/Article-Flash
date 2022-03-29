@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import Header from "../Header";
-
 export function SetList() {
   const dispatch = useDispatch();
 
@@ -66,6 +64,9 @@ export function SetList() {
                         <button onClick={() => handleDelete(id)}>Delete</button>
                         <Link to={`/edit-set/${id}`}>
                           <button>Edit</button>
+                        </Link>
+                        <Link to={`/flashcards/${id}`}>
+                          <button>Study</button>
                         </Link>
                       </td>
                     </tr>

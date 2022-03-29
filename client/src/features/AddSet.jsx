@@ -25,7 +25,7 @@ export function AddSet() {
       );
 
       setError(null);
-      navigate("/add-set-set-list");
+      navigate("/dashboard");
     } else {
       setError("Fill in all fields");
     }
