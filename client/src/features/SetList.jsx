@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-export function SetList() {
+export function SetList({ sets }) {
   const dispatch = useDispatch();
 
-  const { entities } = useSelector((state) => state.sets);
+  // const { sets } = useSelector((state) => state.sets);
   const loading = useSelector((state) => state.loading);
 
   const handleDelete = (id) => {
     dispatch(setDeleted({ id }));
   };
 
-  console.log(entities)
+  console.log(sets)
 
 
   return (
@@ -50,8 +50,8 @@ export function SetList() {
                 </tr>
               </thead>
               <tbody>
-                {entities.length &&
-                  entities.map(({ id, name }, i) => (
+                {sets.length &&
+                  sets.map(({ id, name }, i) => (
                     <tr key={i}>
                       <td>{id}</td>
                       <td>{name}</td>

@@ -35,7 +35,7 @@ function App() {
   const user = useSelector(selectUser);
   const [users, setUsers] = useState([]);
   const [articles, setArticles] = useState([]);
-  const [set, setSets] = useState([]);
+  const [sets, setSets] = useState([]);
   const cards = useSelector(state => state.cards);
   // console.log(cards)
   const [funTrivia, setFunTrivia] = useState(SAMPLE_FLASHCARDS)
@@ -43,8 +43,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("/set")
-  })
+    fetch("/flash_sets")
+    .then((r) => r.json())
+    .then((data) => setSets(data));
+  }, []);
 
   useEffect(() => {
     dispatch(fetchArticles());
@@ -128,7 +130,7 @@ function App() {
           <Route path="/login" element={<Login />} /> */}
 
           {/* Dashboard */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard sets={sets}/>} />
 
           {/* Sets */}
           <Route path="/my-sets" element={<FlashSets />} />

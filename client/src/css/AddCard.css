@@ -225,11 +225,11 @@ p {
 }
 
 a {
-    color: #1EAEDB
+    color: #04A5E3
 }
 
 a:hover {
-    color: #0FA0CE
+    color: #04A5E3
 }
 
 .button,
@@ -251,11 +251,11 @@ input[type=submit] {
     white-space: nowrap;
     background-color: transparent;
     border-radius: 4px;
-    border: 1px solid #bbb;
+    border: 1px solid rgba(255, 255, 255, 0.747);
     cursor: pointer;
     box-sizing: border-box;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+    margin-right: 10px;
 }
 
 .button:focus,
@@ -279,8 +279,8 @@ input[type=button].button-primary,
 input[type=reset].button-primary,
 input[type=submit].button-primary {
     color: #FFF;
-    background-color: #00a6e3;
-    border-color: #00a6e3
+    background-color: #04A5E3;
+    border-color: #04A5E3;
 }
 
 .button.button-primary:focus,
@@ -294,8 +294,8 @@ input[type=reset].button-primary:hover,
 input[type=submit].button-primary:focus,
 input[type=submit].button-primary:hover {
     color: #FFF;
-    background-color: #1EAEDB;
-    border-color: #1EAEDB;
+    background-color: #04A5E3;
+    border-color: #04A5E3;
 }
 
 input[type=email],
@@ -344,7 +344,7 @@ input[type=text]:focus,
 input[type=url]:focus,
 select:focus,
 textarea:focus {
-    border: 1px solid #00a6e3;
+    border: 1px solid #04A5E3;
     outline: 0
 }
 

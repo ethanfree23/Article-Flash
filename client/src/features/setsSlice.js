@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchSets = createAsyncThunk("sets/fetchSets", async () => {
-  const response = await fetch("/flash_cards");
+export const fetchSets = createAsyncThunk("dashboard/fetchSets", async () => {
+  const response = await fetch("/flash_sets");
   const sets = await response.json();
   return sets;
 });

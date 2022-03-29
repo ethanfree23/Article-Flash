@@ -5,12 +5,12 @@ import StatContainer from './StatContainer.js';
 import SetList from './features/SetList.jsx'
 
 
-function Dashboard() {
+function Dashboard({ sets }) {
   return (
     <>
-        <Header />
-        <StatContainer />
-        <SetList />
+      <Header />
+      <StatContainer />
+      <SetList sets={sets} />
     </>
   )
 }
