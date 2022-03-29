@@ -17,6 +17,8 @@
     transition: 500ms;
     cursor: pointer;
     transform: perspective(1000px)rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
 
 .card:hover{

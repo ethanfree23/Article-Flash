@@ -5,7 +5,8 @@
     margin-bottom: 15%;
     padding: 27px;
     border: 3px solid #31b455;
-    box-shadow: 0 0 5px 2px #00a6e3;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background-color: rgba(255, 255, 255, 0.233);
 }
 
 .box__grid {
@@ -14,5 +15,5 @@
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 2rem;
 }
