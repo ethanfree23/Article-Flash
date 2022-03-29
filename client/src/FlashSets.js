@@ -8,7 +8,6 @@ function FlashSets() {
   return (
     <>
     <Header />
-
     <SetList />
     </>
   )

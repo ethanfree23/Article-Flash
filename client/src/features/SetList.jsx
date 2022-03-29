@@ -22,11 +22,6 @@ export function SetList() {
         <div className="row">
           <h1>Redux CRUD Set app</h1>
         </div>
-        <div>
-          <Link to="/dashboard">
-            <button className="button-primary">Go To Dashboard!</button>
-          </Link>
-        </div>
         <div className="row">
           <div className="two columns">
             <button
@@ -65,7 +60,7 @@ export function SetList() {
                         <Link to={`/edit-set/${id}`}>
                           <button>Edit</button>
                         </Link>
-                        <Link to={`/flashcards/${id}`}>
+                        <Link to={`/study-set/${id}`}>
                           <button>Study</button>
                         </Link>
                       </td>

@@ -1,19 +1,12 @@
 .article__box {
     border: 3px solid #31b455;
+    box-shadow: 0 0 5px 2px #00a6e3;
     height: 200px;
     width: 200px;
     overflow: auto;
-    /* margin-right: 1.4rem; */
-    /* margin-left: 1.4rem; */
-    /* margin-top: 1.4rem; */
-    /* margin-bottom: 1.4rem; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* position: relative; */
-    /* border-radius: .25rem; */
-    /* box-shadow: 0 0 5px 2px #00a6e370; */
-    /* background-color: white; */
+    border-radius: 3px;
+    background-color: #f3f1f1;
+    padding: 5px;
     /* transform-style: preserve-3d; */
     /* height: 200px; */
     /* width: 200px; */
