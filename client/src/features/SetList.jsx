@@ -32,7 +32,7 @@ export function SetList({ sets }) {
             </button>
           </div>
           <div className="two columns">
-            <Link to="/add-set">
+            <Link to="/add-set" sets={sets}>
               <button className="button-primary">Add set</button>
             </Link>
           </div>

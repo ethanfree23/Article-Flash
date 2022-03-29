@@ -44,9 +44,14 @@ function App() {
 
   useEffect(() => {
     fetch("/flash_sets")
-    .then((r) => r.json())
-    .then((data) => setSets(data));
+      .then((r) => r.json())
+      .then((data) => setSets(data));
   }, []);
+
+  function handleAddSet(newSet) {
+    const newSetArray = [newSet, ...sets];
+    setSets(newSetArray)
+  };
 
   useEffect(() => {
     dispatch(fetchArticles());
@@ -110,7 +115,7 @@ function App() {
           <Route path="/card-list" element={<CardList />} />
 
           {/* Add Set */}
-          <Route path="/add-set" element={<AddSet />} />
+          <Route path="/add-set" element={<AddSet onAddSet={handleAddSet} />} />
           <Route path="/add-set-set-list" element={<SetList />} />
 
           {/* Edit Set */}
@@ -130,7 +135,7 @@ function App() {
           <Route path="/login" element={<Login />} /> */}
 
           {/* Dashboard */}
-          <Route path="/dashboard" element={<Dashboard sets={sets}/>} />
+          <Route path="/dashboard" element={<Dashboard sets={sets} />} />
 
           {/* Sets */}
           <Route path="/my-sets" element={<FlashSets />} />
