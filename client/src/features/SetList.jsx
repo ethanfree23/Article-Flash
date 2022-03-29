@@ -20,7 +20,7 @@ export function SetList() {
     <>
       <div className="container">
         <div className="row">
-          <h1>Redux CRUD Set app</h1>
+          <h1>Sets</h1>
         </div>
         <div className="row">
           <div className="two columns">

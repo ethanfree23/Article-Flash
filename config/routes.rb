@@ -9,8 +9,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  post '/signup', to: 'registration#create'
-  get '/login', to: 'session#create'
-  delete '/logout', to: 'session#destroy'
+  post '/signup', to: 'users#create'
+  # Route post “/signup”, to: “users#create” => responsible for Signup if the customer does not have an account
+  get '/me', to: 'users#show'
+  # Route get “/me”, to: “users#show” => responsible for auto-login and remember session
+
+  post '/login', to: 'session#login'
+  # Route post “/login”, to: “sessions#login” => responsible for login
+  delete '/logout', to: 'session#logout'
+  # Route delete “/logout”, to: “sessions#logout” => responsible for logout
+
+  post '/reset', to: 'passwords#reset'
+  # Route post “/reset”, to: “passwords#reset” => responsible for reset password.
+
   get '/myanalytics', to: 'application#hello_world'
 end

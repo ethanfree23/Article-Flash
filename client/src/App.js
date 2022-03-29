@@ -35,11 +35,16 @@ function App() {
   const user = useSelector(selectUser);
   const [users, setUsers] = useState([]);
   const [articles, setArticles] = useState([]);
+  const [set, setSets] = useState([]);
   const cards = useSelector(state => state.cards);
   // console.log(cards)
   const [funTrivia, setFunTrivia] = useState(SAMPLE_FLASHCARDS)
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetch("/set")
+  })
 
   useEffect(() => {
     dispatch(fetchArticles());

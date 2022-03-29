@@ -56,3 +56,5 @@ end
 
 
 gem "active_model_serializers", "~> 0.10.13"
+
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'

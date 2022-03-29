@@ -16,7 +16,7 @@ console.log(entities)
   return (
     <div className="cardlist__container">
       <div className="row">
-        <h1>Redux CRUD Card List</h1>
+        <h1>Cards List</h1>
       </div>
       <div className="row">
         <div className="two columns">
