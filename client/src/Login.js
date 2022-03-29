@@ -73,7 +73,9 @@ function Login({ users }) {
         // onSubmit={manageLogin}
         onSubmit={manageLogin}
       >
-        <h1>Login Here </h1>
+        <div >
+          <h1 className="login__text">Login Here </h1>
+        </div>
         <input
           type="name"
           placeholder="Name"
@@ -85,14 +87,14 @@ function Login({ users }) {
           placeholder="Email"
           value={email}
           onChange={manageEmail}
-          // onChange={(e) => setEmail(e.target.value)}
+        // onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={managePassword}
-          // onChange={(e) => setPassword(e.target.value)}
+        // onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" className="submit__btn">
           Submit

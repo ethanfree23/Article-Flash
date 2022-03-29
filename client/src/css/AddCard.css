@@ -276,8 +276,8 @@ input[type=button].button-primary,
 input[type=reset].button-primary,
 input[type=submit].button-primary {
     color: #FFF;
-    background-color: #33C3F0;
-    border-color: #33C3F0
+    background-color: #00a6e3;
+    border-color: #00a6e3
 }
 
 .button.button-primary:focus,
@@ -341,7 +341,7 @@ input[type=text]:focus,
 input[type=url]:focus,
 select:focus,
 textarea:focus {
-    border: 1px solid #33C3F0;
+    border: 1px solid #00a6e3;
     outline: 0
 }
 

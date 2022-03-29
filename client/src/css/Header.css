@@ -1,16 +1,19 @@
 .header {
     background-color: white;
     padding: 20px;
-    border-bottom: 2px solid #31b455;
+    border-bottom: 5px solid #00a6e3;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     display: flex;
     justify-content: left;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .header__logo {
     background-color: white;
     width: 25%;
     padding-left: 2%;
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
 }
 
 .header__links_container {
@@ -29,4 +32,6 @@
     margin: 5px;
     padding: 10px;
     font-size: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
