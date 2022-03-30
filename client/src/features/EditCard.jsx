@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-import { cardUpdated } from "./cardsSlice";
+import { updateCard } from "./cardsSlice";
 
 export function EditCard() {
   const { pathname } = useLocation();
@@ -25,7 +25,7 @@ export function EditCard() {
   const handleClick = () => {
     if (word && meaning) {
       dispatch(
-        cardUpdated({
+        updateCard({
           id: cardId,
           word,
           meaning,

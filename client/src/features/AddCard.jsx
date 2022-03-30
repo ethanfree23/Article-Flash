@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { cardAdded } from "./cardsSlice";
+import { createCard } from "./cardsSlice";
 
 export function AddCard() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export function AddCard() {
   const handleClick = () => {
     if (word && meaning) {
       dispatch(
-        cardAdded({
+        createCard({
           id: cardsAmount + 1,
           word,
           meaning,

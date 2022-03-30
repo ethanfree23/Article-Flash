@@ -1,16 +1,16 @@
-import { fetchSets, setDeleted } from "./setsSlice";
+import { fetchSets, deleteSet } from "./setsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-export function SetList({ sets }) {
+export function SetList() {
   const dispatch = useDispatch();
 
-  // const { sets } = useSelector((state) => state.sets);
+  const { sets } = useSelector((state) => state.sets);
   const loading = useSelector((state) => state.loading);
 
   const handleDelete = (id) => {
-    dispatch(setDeleted({ id }));
+    dispatch(deleteSet({ id }));
   };
 
   console.log(sets)

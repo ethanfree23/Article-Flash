@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-import { setUpdated } from "./setsSlice";
+import { updateSet } from "./setsSlice";
 
 export function EditSet() {
   const { pathname } = useLocation();
@@ -23,7 +23,7 @@ export function EditSet() {
   const handleClick = () => {
     if (name) {
       dispatch(
-        setUpdated({
+        updateSet({
           id: setId,
           name,
         })

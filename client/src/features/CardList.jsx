@@ -1,4 +1,4 @@
-import { fetchCards, cardDeleted } from "./cardsSlice";
+import { fetchCards, deleteCard } from "./cardsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ export function CardList() {
   const loading = useSelector((state) => state.loading);
 
   const handleDelete = (id) => {
-    dispatch(cardDeleted({ id }));
+    dispatch(deleteCard({ id }));
   };
 
 console.log(entities)

@@ -11,7 +11,7 @@ function LoginForm({onLogin}) {
     function handleSubmit(e){
         e.preventDefault();
         setIsLoading(true);
-        fetch("/login", {
+        fetch("/users", {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ email, password })
@@ -27,7 +27,7 @@ function LoginForm({onLogin}) {
     
     return (
         <Container>
-            <h1>Inventory & POS</h1>
+            <h1>Article Flash</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>
@@ -52,7 +52,7 @@ function LoginForm({onLogin}) {
                     />
                 </Form.Group>
                 <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Login"}</Button>
-                {errors.map(error => (
+                {errors?.map(error => (
                     <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
                 ))}
             </Form>

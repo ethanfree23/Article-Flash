@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { setAdded } from "./setsSlice";
+import { createSet } from "./setsSlice";
 
 export function AddSet({ sets, onAddSet }) {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export function AddSet({ sets, onAddSet }) {
   const handleClick = () => {
     if (name) {
       dispatch(
-        setAdded({
+        createSet({
           id: setsAmount + 1,
           name,
         })

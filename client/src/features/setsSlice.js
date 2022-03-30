@@ -1,52 +1,76 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchSets = createAsyncThunk("dashboard/fetchSets", async () => {
-  const response = await fetch("/flash_sets");
-  const sets = await response.json();
-  return sets;
-});
+export const fetchSets = createAsyncThunk(
+  "sets/fetchSet",
+  async () => {
+    return fetch('/flash_sets').then((res) => res.json()).then((data) => data);
+  }
+);
 
-// console.log(sets)
+export const deleteSet = createAsyncThunk(
+  "sets/deleteSet",
+  async (setId) => {
+    fetch(`/flash_sets/${setId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return setId;
+  }
+);
+
+export const createSet = createAsyncThunk(
+  "sets/createSet",
+  async (newSet) => {
+    return fetch(`/flash_sets`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newSet),
+    }).then((res) => res.json());
+  }
+);
+
+export const updateSet = createAsyncThunk(
+  "sets/updateSet",
+  async (updateSet) => {
+    return fetch(`/flash_sets/${updateSet['id']}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateSet),
+    }).then((res) => res.json());
+  }
+);
 
 const setsSlice = createSlice({
-  name: "set",
+  name: "sets",
   initialState: {
     entities: [],
-    loading: false,
   },
-  reducers: {
-    setAdded(state, action) {
-      state.entities.push(action.payload);
-    },
-    setUpdated(state, action) {
-      const { id, name } = action.payload;
-      const existingSet = state.entities.find((set) => set.id === id);
-      if (existingSet) {
-        existingSet.name = name;
-      }
-    },
-    setDeleted(state, action) {
-      const { id } = action.payload;
-      const existingSet = state.entities.find((set) => set.id === id);
-      if (existingSet) {
-        state.entities = state.entities.filter((set) => set.id !== id);
-      }
-    },
-  },
+  reducers: {},
   extraReducers: {
-    [fetchSets.pending]: (state, action) => {
-      state.loading = true;
+    [fetchSets.fulfilled](state, action) {
+      state.entities = action.payload;
     },
-    [fetchSets.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.entities = [...state.entities, ...action.payload];
+    [deleteSet.fulfilled](state, action) {
+      state.entities = state.entities.filter(
+        (set) => set.id !== action.payload
+      );
     },
-    [fetchSets.rejected]: (state, action) => {
-      state.loading = false;
+    [createSet.fulfilled](state, action) {
+      state.entities = [...state.entities, action.payload];
+    },
+    [updateSet.fulfilled](state, action) {
+      state.entities = state.entities.filter(
+        (set) => set.id !== action.payload['id']
+      )
+      state.entities = [...state.entities, action.payload];
     },
   },
 });
-
-export const { setAdded, setUpdated, setDeleted } = setsSlice.actions;
 
 export default setsSlice.reducer;
