@@ -11,7 +11,7 @@ function LoginForm({onLogin}) {
     function handleSubmit(e){
         e.preventDefault();
         setIsLoading(true);
-        fetch("/users", {
+        fetch("/login", {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ email, password })

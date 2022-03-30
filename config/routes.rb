@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   # Route get “/me”, to: “users#show” => responsible for auto-login and remember session
 
-  post '/', to: 'session#login'
+  post '/login', to: 'sessions#login'
   # Route post “/login”, to: “sessions#login” => responsible for login
-  delete '/logout', to: 'session#logout'
+  delete '/logout', to: 'sessions#logout'
   # Route delete “/logout”, to: “sessions#logout” => responsible for logout
 
   post '/reset', to: 'passwords#reset'

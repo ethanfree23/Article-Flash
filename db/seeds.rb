@@ -7,8 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Seeding Users..."
-User.create(username: "Ethanfree23", password: "Audirsq8$!", email: "ethanfree23@gmail.com", first_name: "Ethan", last_name: "Freeman", country: "USA")
-User.create(username: "Test", password: "test", email: "test@gmail.com", first_name: "test", last_name: "test", country: "test")
+User.create(username: "Ethanfree23", password_digest: "Audirsq8$!", address: "Ethan", email: "ethanfree23@gmail.com", phone: "Freeman")
 
 puts "Seeding Flash_sets..."
 FlashSet.create(name: "Common spanish verbs")

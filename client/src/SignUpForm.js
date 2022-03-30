@@ -107,7 +107,7 @@ function SignUpForm({onLogin}){
                     />
                 </Form.Group>
                 <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Login"}</Button>
-                {errors.map(error => (
+                {errors?.map(error => (
                     <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
                 ))}
             </Form>
