@@ -5,14 +5,17 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { fetchCards } from "./features/cardsSlice";
-import store from './app/store.js' 
+import store from './app/store.js'
+import { BrowserRouter } from 'react-router-dom';
 
 store.dispatch(fetchCards());
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

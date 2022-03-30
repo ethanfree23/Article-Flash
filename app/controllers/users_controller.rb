@@ -1,40 +1,28 @@
 class UsersController < ApplicationController
-    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-
-    def index
-        render json: User.all
-    end
-
-    def show
-        user = find_user
-        render json: user
-    end
-
+    skip_before_action :authorize, only: :create
+  
     def create
-        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
         user = User.create!(user_params)
+        session[:user_id] = user.id
         render json: user, status: :created
     end
 
-    def update
-        user = find_user
-        user.update(user_params)
+    def index 
+        render json: current_user, status: :ok
     end
 
-    def destroy
-        user = find_user
-        user.destroy
-        head :no_content
+    def show
+        render json: current_user, include: :flash_sets, except: [:created_at, :updated_at], status: :ok
+    end
+
+    def update
+        current_user.update!(user_params)
+        render json: current_user, status: :ok
     end
 
     private
-    
-    def find_user
-        User.find(params[:id])
-    end
 
-    def params_users
-        params.permit(:name, :email, :username, :password_digest)
+    def user_params
+        params.permit(:username, :password, :password_confirmation, :address, :email, :phone)
     end
 end

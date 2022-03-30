@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :flash_cards, only: [:index, :show, :create, :update, :destroy]
   resources :users, only: [:index, :show, :create, :update, :destroy]
+  resources :flash_cards, only: [:index, :show, :create, :update, :destroy]
   # resources :article_cards, only: [:index, :show]
   resources :articles, only: [:index, :show]
   resources :flash_sets, only: [:index, :show, :create, :update, :destroy]
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   # Route get “/me”, to: “users#show” => responsible for auto-login and remember session
 
-  post '/login', to: 'session#login'
+  post '/', to: 'session#login'
   # Route post “/login”, to: “sessions#login” => responsible for login
   delete '/logout', to: 'session#logout'
   # Route delete “/logout”, to: “sessions#logout” => responsible for logout
@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   # Route post “/reset”, to: “passwords#reset” => responsible for reset password.
 
   get '/myanalytics', to: 'application#hello_world'
+
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

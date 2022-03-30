@@ -1,4 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password, :email, :first_name, :last_name, :country
-  has_many :flash_sets
+  attributes :id, :username, :password, :address, :email, :phone
 end

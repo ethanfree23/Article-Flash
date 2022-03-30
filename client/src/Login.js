@@ -1,108 +1,49 @@
-import React, { useState } from 'react'
-import './css/Login.css';
+import { useState } from "react";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
+import ResetPasswordForm from './ResetPasswordForm';
+import {Container, Button, Figure, Row, Col} from 'react-bootstrap';
+// import LoginImage from '../images/inventory-pos-final-project.png';
 
-import { login, logout } from './features/userSlice'
-import { useDispatch } from 'react-redux'
+function Login({ onLogin }){
+    const [showResetForm, setShowResetForm] = useState(false)
+    const [showLogin, setShowLogin] = useState(true);
 
-import { useNavigate } from 'react-router-dom'
-
-function Login({ users }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [status, setStatus] = useState("pending")
-
-  console.log(users)
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  localStorage.setItem('email', email);
-  localStorage.setItem('password', password);
-
-  function manageEmail(e) {
-    const value = e.target.value;
-    setEmail(value);
-  }
-
-  function managePassword(e) {
-    const value = e.target.value;
-    setPassword(value);
-  }
-
-  function manageLogin(e) {
-    e.preventDefault();
-
-    users.map((user) => {
-      // console.log(user.name)
-      // console.log(user.password)
-      if (user.email === email && user.password === password) {
-        navigate("/dashboard")
-      } else {
-        setStatus("rejected")
-      }
-    })
-  }
-
-  function manageRejection() {
-    return (
-      <h2>User Not Found</h2>
+    return (        
+        <Container className="mt-5">
+            <Row className="justify-content-md-center">
+                <Col>
+                    <Figure>
+                        <Figure.Image width={600} alt="Inventory & POS" src="" />
+                    </Figure>
+                </Col>
+                <Col>
+                    { showLogin ? (
+                        <>
+                            <LoginForm onLogin={onLogin} />
+                            <div>Don't have an account? &nbsp;
+                                <Button variant="outline-dark" onClick={() => setShowLogin(false)}>
+                                    Sign Up
+                                </Button>
+                                <Button onClick={() => setShowResetForm(!showResetForm)} className="m-3" variant="outline-dark"> {showResetForm?"Cancel Reset Password":"Reset Password"}</Button>
+                                {showResetForm ? <ResetPasswordForm setShowResetForm={setShowResetForm} /> : null}
+                            </div>
+                        </>
+                    ): (
+                        <>
+                            <SignUpForm onLogin={onLogin} />
+                            <p>
+                                Already have an account? &nbsp;
+                                <Button  className="m-3" variant="outline-dark" onClick={() => setShowLogin(true)}>
+                                    Log In
+                                </Button>
+                            </p>
+                        </>
+                    )
+                    }
+                </Col>
+            </Row>
+        </Container>
     )
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(
-      login({
-        name: name,
-        email: email,
-        password: password,
-        loggedIn: true,
-      })
-    );
-
-    setEmail("");
-    setPassword("");
-  };
-
-  return (
-    <div className="login">
-      <form
-        className="login__form"
-        // onSubmit={manageLogin}
-        onSubmit={manageLogin}
-      >
-        <div >
-          <h1 className="login__text">Login Here </h1>
-        </div>
-        <input
-          type="name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={manageEmail}
-        // onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={managePassword}
-        // onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="submit__btn">
-          Submit
-        </button>
-      </form>
-      {status === "rejected" && manageRejection()}
-    </div>
-  );
-};
-
+}
 export default Login;
