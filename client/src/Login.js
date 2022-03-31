@@ -13,9 +13,9 @@ function Login({ onLogin }){
         <Container className="mt-5">
             <Row className="justify-content-md-center">
                 <Col>
-                    <Figure>
+                    {/* <Figure>
                         <Figure.Image width={600} alt="Inventory & POS" src="" />
-                    </Figure>
+                    </Figure> */}
                 </Col>
                 <Col>
                     { showLogin ? (

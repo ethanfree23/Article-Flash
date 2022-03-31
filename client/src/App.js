@@ -1,6 +1,5 @@
-import { Container, Alert } from 'react-bootstrap'
-import NavBar from './Header';
 import './css/App.css';
+import { Container, Alert } from 'react-bootstrap'
 
 import axios from 'axios';
 
@@ -10,10 +9,10 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-
 import React, { useState, useEffect } from "react";
-import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
+import { selectSet } from "./features/setsSlice";
 import { selectCard } from './features/cardsSlice'
 import { fetchArticles } from './features/articlesSlice'
 import { useDispatch } from "react-redux";
@@ -40,7 +39,7 @@ import CardList from './features/CardList.jsx'
 
 function App() {
   //   const user = useSelector(selectUser);
-  //   const [users, setUsers] = useState(null);
+  const [user, setUser] = useState(null);
   const [articles, setArticles] = useState([]);
   const [sets, setSets] = useState([]);
   //   // const cards = useSelector(state => state.cards);
@@ -49,13 +48,12 @@ function App() {
 
   //   // const dispatch = useDispatch();
 
-  const [user, setUser] = useState(null);
 
   const navigate = useNavigate()
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
+    fetch("/users").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -74,12 +72,6 @@ function App() {
     navigate("/");
   }
 
-  // useEffect(() => {
-  //   fetch("/users")
-  //     .then((r) => r.json())
-  //     .then((data) => setUsers(data));
-  // }, []);
-
   useEffect(() => {
     fetch("/flash_sets")
       .then((r) => r.json())
@@ -95,7 +87,7 @@ function App() {
   //   //   dispatch(fetchArticles());
   //   // }, [dispatch]);
 
-
+//  articles API
   useEffect(() => {
     fetch("http://localhost:8000/results")
       .then(r => {
@@ -107,7 +99,7 @@ function App() {
       })
   }, []);
 
-  // Trivia cards
+  // Trivia cards API
   useEffect(() => {
     axios
     .get("https://opentdb.com/api.php?amount=12")
@@ -128,7 +120,7 @@ function App() {
       })
   }, [])
 
-  // Trivia cards
+  // Trivia cards - edit words
   function decodeString(str) {
     const textArea = document.createElement('textarea')
     textArea.innerHTML = str
@@ -154,7 +146,7 @@ function App() {
         <Route path="/logout" element={<Logout sets={sets} />} />
 
         {/* Login */}
-        <Route path="/login" element={<Login sets={sets} />} />
+        <Route path="/login" element={<Login user={user} />} />
 
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard sets={sets} />} />
