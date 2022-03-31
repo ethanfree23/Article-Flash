@@ -50,7 +50,7 @@ export function SetList() {
                 </tr>
               </thead>
               <tbody>
-                {sets.length &&
+                {sets?.length &&
                   sets.map(({ id, name }, i) => (
                     <tr key={i}>
                       <td>{id}</td>

@@ -15,7 +15,7 @@ function Logout() {
     return (
         <div className="logout">
             <h1>
-                Welcome <span className="user__name">{user.name}</span>!
+                Welcome <span className="user__name">{user?.name}</span>!
             </h1>
             <button className="logout__btn" onClick={(e) => logOut(e)}>
                 Log Out
@@ -24,4 +24,4 @@ function Logout() {
     )
 }
 
-export default Logout
+export default Logout;
