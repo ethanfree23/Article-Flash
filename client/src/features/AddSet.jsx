@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createSet } from "./setsSlice";
 
-export function AddSet({ sets, onAddSet }) {
+export function AddSet() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -13,13 +13,13 @@ export function AddSet({ sets, onAddSet }) {
 
   const handleName = (e) => setName(e.target.value);
 
-  const setsAmount = useSelector((state) => state.sets.entities.length);
+  // const setsAmount = useSelector((state) => state.sets.entities.length);
 
   const handleClick = () => {
     if (name) {
       dispatch(
         createSet({
-          id: setsAmount + 1,
+          user_id: 5,
           name,
         })
       );

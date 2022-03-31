@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 import { selectSet } from "./features/setsSlice";
 import { selectCard } from './features/cardsSlice'
-import { fetchArticles } from './features/articlesSlice'
+import { fetchSets } from './features/setsSlice'
 import { useDispatch } from "react-redux";
 
 import Login from './Login';
@@ -46,7 +46,7 @@ function App() {
   // console.log(cards)
   const [funTrivia, setFunTrivia] = useState(SAMPLE_FLASHCARDS)
 
-  //   // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
 
   const navigate = useNavigate()
@@ -72,22 +72,16 @@ function App() {
     navigate("/");
   }
 
-  useEffect(() => {
-    fetch("/flash_sets")
-      .then((r) => r.json())
-      .then((data) => setSets(data));
-  }, []);
-
   function handleAddSet(newSet) {
     const newSetArray = [newSet, ...sets];
     setSets(newSetArray)
   };
 
-  //   // useEffect(() => {
-  //   //   dispatch(fetchArticles());
-  //   // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchSets());
+  }, [dispatch]);
 
-//  articles API
+  //  articles API
   useEffect(() => {
     fetch("http://localhost:8000/results")
       .then(r => {
@@ -102,8 +96,8 @@ function App() {
   // Trivia cards API
   useEffect(() => {
     axios
-    .get("https://opentdb.com/api.php?amount=12")
-    .then(r => {
+      .get("https://opentdb.com/api.php?amount=12")
+      .then(r => {
         setFunTrivia(r.data.results.map((questionItem, index) => {
           const answer = decodeString(questionItem.correct_answer)
           const options = [
@@ -133,7 +127,7 @@ function App() {
       <Container>
         <Alert className="mt-3" variant="primary" >Login, or Signup!</Alert>
       </Container>
-      <Login onLogin={setUser} />
+      <Login user={user} onLogin={setUser} />
     </>
   )
 
@@ -142,11 +136,11 @@ function App() {
       {/* <NavBar user={user} handleLogOutClick={handleLogOutClick} /> */}
       <Routes>
 
+        {/* Login */}
+        <Route path="/login" element={<Login user={user} onLogin={setUser} />} />
+
         {/* Logout */}
         <Route path="/logout" element={<Logout sets={sets} />} />
-
-        {/* Login */}
-        <Route path="/login" element={<Login user={user} />} />
 
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard sets={sets} />} />
@@ -185,7 +179,6 @@ function App() {
         {/* Flashcards */}
         <Route path="/flashcards" element={<FlashcardsPage />} />
 
-
       </Routes>
     </>
   );
@@ -219,8 +212,3 @@ const SAMPLE_FLASHCARDS = [
     ]
   }
 ]
-
-
-
-//           {/* Article */}
-//           <Route path="/article" element={<Article />} />

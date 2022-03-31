@@ -2,6 +2,8 @@ class FlashSetsController < ApplicationController
     # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+    # skip_before_action :authorize, only: [:index, :create]
+
     def index
         render json: FlashSet.all
     end
@@ -12,9 +14,7 @@ class FlashSetsController < ApplicationController
     end
 
     def create
-        # byebug
         # get the current user and associate the flashset with the current user
-        user = Session.current_user
         flashset = FlashSet.create!(flashset_params)
         render json: flashset, status: :created
     end
@@ -30,7 +30,6 @@ class FlashSetsController < ApplicationController
         head :no_content
     end
 
-
     private
 
     def find_flashset
@@ -38,6 +37,6 @@ class FlashSetsController < ApplicationController
     end
 
     def flashset_params
-        params.permit(:name)
+        params.permit(:name, :user_id)
     end
 end
