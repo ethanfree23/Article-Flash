@@ -44,7 +44,7 @@ export const createSet = createAsyncThunk(
 export const updateSet = createAsyncThunk(
   "sets/updateSet",
   async (updateSet) => {
-    return fetch(`/flash_sets/${updateSet['id']}`, {
+    return fetch(`/flash_sets/${updateSet.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

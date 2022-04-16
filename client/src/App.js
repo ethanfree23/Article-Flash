@@ -69,7 +69,7 @@ function App() {
       }
     });
     // Navigate to home page after logout and clear history
-    navigate("/");
+    navigate("/dashboard");
   }
 
   function handleAddSet(newSet) {

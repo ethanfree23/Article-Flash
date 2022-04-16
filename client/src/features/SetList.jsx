@@ -1,4 +1,4 @@
-import { fetchSets } from "./setsSlice";
+import { fetchSets, deleteSet } from "./setsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -9,9 +9,9 @@ export function SetList() {
   const { entities } = useSelector((state) => state.sets);
   const loading = useSelector((state) => state.loading);
 
-  // const handleDelete = () => {
-  //   dispatch(deleteSet());
-  // };
+  const handleDelete = () => {
+    dispatch(deleteSet());
+  };
 
   console.log(entities)
 
@@ -56,7 +56,7 @@ export function SetList() {
                       <td>{id}</td>
                       <td>{name}</td>
                       <td>
-                        {/* <button onClick={() => handleDelete(id)}>Delete</button> */}
+                        <button onClick={() => handleDelete(id)}>Delete</button>
                         <Link to={`/edit-set/${id}`}>
                           <button>Edit</button>
                         </Link>

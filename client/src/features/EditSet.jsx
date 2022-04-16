@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-import { updateSet, deleteSet } from "./setsSlice";
+import { updateSet } from "./setsSlice";
 
 export function EditSet() {
   const { pathname } = useLocation();
@@ -12,35 +12,29 @@ export function EditSet() {
     state.sets.entities.find((set) => set.id === setId)
   );
 
-  const handleDelete = () => {
-    dispatch(deleteSet(setId));
-  };
-  const handleEdit = () => {
-    dispatch(updateSet(setId));
-  };
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const [name, setName] = useState(set?.name);
+  const [name, setName] = useState(set.name);
   const [error, setError] = useState(null);
 
   const handleName = (e) => setName(e.target.value);
 
-  // const handleClick = () => {
-  //   if (name) {
-  //     dispatch(
-  //       updateSet({
-  //         id: setId,
-  //         name,
-  //       })
-  //     );
+  const handleClick = () => {
+    if (name) {
+      dispatch(
+        updateSet({
+          id: setId,
+          name,
+        })
+      );
 
-  //     setError(null);
-  //     navigate("/dashboard");
-  //   } else {
-  //     setError("Fill in all fields");
-  //   }
-  // };
+      setError(null);
+      navigate("/dashboard");
+    } else {
+      setError("Fill in all fields");
+    }
+  };
 
   return (
     <div className="container">
@@ -59,10 +53,9 @@ export function EditSet() {
             value={name}
           />
           {error && error}
-          <button onClick={handleEdit} className="button-primary">
+          <button onClick={handleClick} className="button-primary">
             Save set
           </button>
-          <button onClick={handleDelete()}>Delete</button>
         </div>
       </div>
     </div>
